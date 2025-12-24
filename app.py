@@ -4,7 +4,7 @@ from botocore.exceptions import ClientError
 
 dynamodb = boto3.resource("dynamodb")
 
-TABLE_NAME = os.environ.get("AUTH_TABLE_NAME")
+TABLE_NAME = os.environ.get("DYNAMODB_AUTH_TABLE_NAME")
 table = dynamodb.Table(TABLE_NAME)
 
 def handler(event, context):
