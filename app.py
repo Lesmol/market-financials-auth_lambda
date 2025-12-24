@@ -9,7 +9,7 @@ TABLE_NAME = os.environ.get("DYNAMODB_AUTH_TABLE_NAME")
 table = dynamodb.Table(TABLE_NAME)
 
 def handler(event, context):
-    print(f"Starting: {json.loads(event)}")
+    print(f"Starting: {json.dumps(event)}")
     headers = event.get("headers", {})
     apikey = headers.get("x-api-key")
     
