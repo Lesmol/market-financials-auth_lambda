@@ -30,23 +30,23 @@ The workflow `build-deploy.yml` performs the following steps:
     * Checks out the code and logs into Amazon ECR.
     * Generates a short SHA for versioning.
     * Builds the Docker image and tags it with both `:latest` and the short SHA.
-    * Pushes both tags to the ECR registry at `x.dkr.ecr.af-south-1.amazonaws.com/market-financials-auth`.
+    * Pushes both tags to the ECR registry at `x.dkr.ecr.af-south-1.amazonaws.com/<registry_name>`.
 2.  **Deploy**:
     * Configures AWS credentials.
-    * Updates the Lambda function (`market_financials_auth_function`) code to use the newly pushed image URI (tagged with the short SHA).
+    * Updates the Lambda function code to use the newly pushed image URI (tagged with the short SHA).
 
 ### ⚙️ Environment Configuration
 The deployment pipeline uses the following AWS configuration:
-* **🌍 Region:** `af-south-1`
-* **📦 ECR Registry:** `market-financials-auth`
-* **⚡ Lambda Function Name:** `market_financials_auth_function`
+* **🌍 Region**
+* **📦 ECR Registry**
+* **⚡ Lambda Function Name**
 
 ## 💻 Local Development
 
 To build the container locally:
 
 ```bash
-docker build -t market-financials-auth .
+docker build -t <image_name> .
 ```
 *Note: This project uses the `public.ecr.aws/lambda/python:3.14-x86_64` base image.*
 
